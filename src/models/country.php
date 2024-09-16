@@ -13,7 +13,7 @@ class Country
 
     public function create($name)
     {
-        $stmt = $this->pdo->prepare('INSERT INTO countries (name) VALUES (:name)');
+        $stmt = $this->pdo->prepare('INSERT INTO Countries (name) VALUES (:name)');
         $stmt->bindParam(':name', $name);
         $stmt->execute();
         return $this->pdo->lastInsertId();
@@ -21,7 +21,7 @@ class Country
 
     public function update($id, $name)
     {
-        $stmt = $this->pdo->prepare('UPDATE countries SET name = :name WHERE id = :id');
+        $stmt = $this->pdo->prepare('UPDATE Countries SET name = :name WHERE id = :id');
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
@@ -29,8 +29,9 @@ class Country
 
     public function delete($id)
     {
-        $stmt = $this->pdo->prepare('DELETE FROM countries WHERE id = :id');
+        $stmt = $this->pdo->prepare('DELETE FROM Countries WHERE id = :id');
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
     }
 }
+
